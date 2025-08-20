@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Building Material Purchase Order</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; padding: 20px; }
+    .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h1, h2 { text-align: center; color: #2c3e50; }
+    .category { margin-bottom: 30px; }
+    .product-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
+    .product { flex: 1 1 300px; background: #f0f0f0; padding: 10px; border-radius: 5px; }
+    .product strong { display: block; margin-bottom: 5px; color: #333; }
+    label { display: block; margin-top: 6px; }
+    select, input[type=number] { width: 100%; padding: 5px; margin-top: 4px; border-radius: 4px; border: 1px solid #ccc; }
+    .order-section { margin-top: 40px; }
+    .form-group { margin-bottom: 15px; }
+    input[type=text], input[type=tel], textarea { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+    .actions { margin-top: 25px; text-align: center; }
+    .btn {
+      background: #27ae60; color: white; border: none; padding: 12px 25px;
+      font-size: 16px; border-radius: 5px; cursor: pointer; margin: 0 10px;
+    }
+    .btn:disabled { background: #aaa; cursor: not-allowed; }
+    @media (max-width: 600px) {
+      .product-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Building Material Purchase Order</h1>
+    
+    <form id="orderForm">
+      <!-- Category 1: Example with subcategories/products -->
+      <div class="category">
+        <h2>ASTM PIPES & FITTINGS</h2>
+        <div class="product-row">
+          <div class="product">
+            <strong>Brand: ABC Pipes</strong>
+            <label for="product1-size">Size</label>
+            <select id="product1-size" name="ASTM Pipes & Fittings - ABC Pipes - Size">
+              <option value="1 inch">1 inch</option>
+              <option value="2 inch">2 inch</option>
+              <option value="3 inch">3 inch</option>
+            </select>
+            <label for="product1-rate">Rate (₹)</label>
+            <input type="number" id="product1-rate" name="ASTM Pipes & Fittings - ABC Pipes - Rate" value="120" readonly />
+            <label for="product1-qty">Quantity</label>
+            <input type="number" id="product1-qty" name="ASTM Pipes & Fittings - ABC Pipes - Qty" min="0" value="0" />
+          </div>
+          <div class="product">
+            <strong>Brand: XYZ Fittings</strong>
+            <label for="product2-size">Size</label>
+            <select id="product2-size" name="ASTM Pipes & Fittings - XYZ Fittings - Size">
+              <option value="1 inch">1 inch</option>
+              <option value="1.5 inch">1.5 inch</option>
+              <option value="2 inch">2 inch</option>
+            </select>
+            <label for="product2-rate">Rate (₹)</label>
+            <input type="number" id="product2-rate" name="ASTM Pipes & Fittings - XYZ Fittings - Rate" value="150" readonly />
+            <label for="product2-qty">Quantity</label>
+            <input type="number" id="product2-qty" name="ASTM Pipes & Fittings - XYZ Fittings - Qty" min="0" value="0" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Further categories with sample products -->
+      <div class="category">
+        <h2>Cement</h2>
+        <div class="product-row">
+          <div class="product">
+            <strong>Brand: UltraTech Cement</strong>
+            <label for="cement-size">Grade</label>
+            <select id="cement-size" name="Cement - UltraTech - Grade">
+              <option value="43 Grade">43 Grade</option>
+              <option value="53 Grade">53 Grade</option>
+            </select>
+            <label for="cement-rate">Rate (₹ per bag)</label>
+            <input type="number" id="cement-rate" name="Cement - UltraTech - Rate" value="350" readonly />
+            <label for="cement-qty">Quantity</label>
+            <input type="number" id="cement-qty" name="Cement - UltraTech - Qty" min="0" value="0" />
+          </div>
+          <div class="product">
+            <strong>Brand: ACC Cement</strong>
+            <label for="cement-acc-grade">Grade</label>
+            <select id="cement-acc-grade" name="Cement - ACC - Grade">
+              <option value="43 Grade">43 Grade</option>
+              <option value="53 Grade">53 Grade</option>
+            </select>
+            <label for="cement-acc-rate">Rate (₹ per bag)</label>
+            <input type="number" id="cement-acc-rate" name="Cement - ACC - Rate" value="360" readonly />
+            <label for="cement-acc-qty">Quantity</label>
+            <input type="number" id="cement-acc-qty" name="Cement - ACC - Qty" min="0" value="0" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Add other categories similarly as needed -->
+
+      <div class="order-section">
+        <h2>Order Details</h2>
+
+        <div class="form-group">
+          <label for="order-name">Name of Order Placer*</label>
+          <input type="text" id="order-name" name="order-name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="order-address">Address*</label>
+          <textarea id="order-address" name="order-address" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="order-location">Location*</label>
+          <input type="text" id="order-location" name="order-location" required />
+        </div>
+
+        <div class="form-group">
+          <label for="order-mobile">Mobile Number*</label>
+          <input type="tel" id="order-mobile" name="order-mobile" required pattern="[0-9]{10,15}" title="Enter a valid mobile number" />
+        </div>
+
+        <div class="form-group">
+          <label for="order-map">Map Location (Google Maps link or address)</label>
+          <input type="text" id="order-map" name="order-map" />
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn" onclick="sendWhatsApp()">Send Order via WhatsApp</button>
+          <button type="button" class="btn" onclick="sendMail()">Send Order via Email</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function collectOrderDetails() {
+      const form = document.getElementById('orderForm');
+      const elements = form.elements;
+      const orderDetails = [];
+
+      // Collect product selections
+      for (let i = 0; i < elements.length; i++) {
+        const elem = elements[i];
+        if (elem.name && elem.name.endsWith('Qty')) {
+          let qty = parseInt(elem.value);
+          if (qty > 0) {
+            const baseName = elem.name.slice(0, -3); // remove 'Qty'
+            
+            // Find corresponding size/grade and rate inputs for this product
+            const sizeElem = form.elements[baseName + 'Size'] || form.elements[baseName + 'Grade'] || null;
+            const rateElem = form.elements[baseName + 'Rate'] || null;
+            
+            let sizeOrGrade = sizeElem ? sizeElem.value : '';
+            let rate = rateElem ? rateElem.value : '';
+
+            // Format product line
+            orderDetails.push(`${baseName.replace(/-/g,' ')} - ${sizeOrGrade} - Qty: ${qty} - Rate: ₹${rate}`);
+          }
+        }
+      }
+
+      return orderDetails.join('\n');
+    }
+
+    function getClientInfo() {
+      const name = document.getElementById('order-name').value.trim();
+      const address = document.getElementById('order-address').value.trim();
+      const location = document.getElementById('order-location').value.trim();
+      const mobile = document.getElementById('order-mobile').value.trim();
+      const map = document.getElementById('order-map').value.trim();
+
+      if (!name || !address || !location || !mobile) {
+        alert('Please fill all required fields marked with *');
+        return null;
+      }
+      return { name, address, location, mobile, map };
+    }
+
+    function sendWhatsApp() {
+      const client = getClientInfo();
+      if (!client) return;
+
+      const products = collectOrderDetails();
+      if (!products) {
+        alert('Please select at least one product with quantity greater than zero.');
+        return;
+      }
+
+      let message = `Building Material Purchase Order\n\nProducts:\n${products}\n\nName: ${client.name}\nAddress: ${client.address}\nLocation: ${client.location}\nMobile: ${client.mobile}`;
+      if (client.map) {
+        message += `\nMap Location: ${client.map}`;
+      }
+
+      const whatsappNumber = '+919946171740'; // ADD YOUR SHOP'S WHATSAPP NUMBER HERE e.g., 919999999999
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    function sendMail() {
+      const client = getClientInfo();
+      if (!client) return;
+
+      const products = collectOrderDetails();
+      if (!products) {
+        alert('Please select at least one product with quantity greater than zero.');
+        return;
+      }
+
+      let subject = 'New Building Material Purchase Order';
+      let body = `Products:\n${products}\n\nName: ${client.name}\nAddress: ${client.address}\nLocation: ${client.location}\nMobile: ${client.mobile}`;
+      if (client.map) {
+        body += `\nMap Location: ${client.map}`;
+      }
+
+      const email = ''; // ADD YOUR SHOP'S EMAIL HERE e.g., myshop@example.com
+      const mailto_link = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto_link;
+    }
+  </script>
+</body>
+</html>
